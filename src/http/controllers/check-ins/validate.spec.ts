@@ -34,15 +34,14 @@ describe('Validate Check-in (e2e)', () => {
     })
 
     await request(app.server)
-      .post(`/check-ins/${checkIn.id}/validate`)
+      .patch(`/check-ins/${checkIn.id}/validate`)
       .set('Authorization', `Bearer ${token}`)
       .send()
       .expect(204)
 
-    checkIn = await prisma.checkIn.create({
-      data: {
-        gym_id: gym.id,
-        user_id: user.id,
+    checkIn = await prisma.checkIn.findUniqueOrThrow({
+      where: {
+        id: checkIn.id,
       },
     })
 
