@@ -2,7 +2,6 @@
 
 GymPass style app.
 
-
 ## RFs (Functional Requirements)
 
 - [x] It should be possible to register.
